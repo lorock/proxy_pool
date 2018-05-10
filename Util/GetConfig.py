@@ -42,6 +42,10 @@ class GetConfig(object):
         return self.config_file.get('DB', 'host')
 
     @LazyProperty
+    def db_password(self):
+        return self.config_file.get('DB', 'password')
+    
+    @LazyProperty
     def db_port(self):
         return int(self.config_file.get('DB', 'port'))
 
@@ -62,6 +66,7 @@ if __name__ == '__main__':
     print(gg.db_type)
     print(gg.db_name)
     print(gg.db_host)
+    print(gg.db_password)
     print(gg.db_port)
     print(gg.proxy_getter_functions)
     print(gg.host_ip)

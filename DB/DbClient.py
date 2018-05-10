@@ -74,33 +74,34 @@ class DbClient(object):
             pass
         assert __type, 'type error, Not support DB type: {}'.format(self.config.db_type)
         self.client = getattr(__import__(__type), __type)(name=self.config.db_name,
-                                                          host=self.config.db_host,
-                                                          port=self.config.db_port)
-
+                host=self.config.db_host,
+                password=self.config.db_password,
+                port=self.config.db_port)
+    
     def get(self, key, **kwargs):
         return self.client.get(key, **kwargs)
-
+    
     def put(self, key, **kwargs):
         return self.client.put(key, **kwargs)
-
+    
     def update(self, key, value, **kwargs):
         return self.client.update(key, value, **kwargs)
-
+    
     def delete(self, key, **kwargs):
         return self.client.delete(key, **kwargs)
-
+    
     def exists(self, key, **kwargs):
         return self.client.exists(key, **kwargs)
-
+    
     def pop(self, **kwargs):
         return self.client.pop(**kwargs)
-
+    
     def getAll(self):
         return self.client.getAll()
-
+    
     def changeTable(self, name):
         self.client.changeTable(name)
-
+    
     def getNumber(self):
         return self.client.getNumber()
 

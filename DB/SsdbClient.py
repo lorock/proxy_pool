@@ -32,16 +32,17 @@ class SsdbClient(object):
 
     """
 
-    def __init__(self, name, host, port):
+    def __init__(self, name, host, password, port):
         """
         init
         :param name: hash name
         :param host: ssdb host
+        :param host: ssdb password
         :param port: ssdb port
         :return:
         """
         self.name = name
-        self.__conn = Redis(connection_pool=BlockingConnectionPool(host=host, port=port))
+        self.__conn = Redis(connection_pool=BlockingConnectionPool(host=host, password=password, port=port))
 
     def get(self, proxy):
         """
